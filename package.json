@@ -1,0 +1,32 @@
+{
+  "name": "budgeteer",
+  "version": "1.0.0",
+  "description": "A humble personal budgeting app. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SolidJ01/Budgeteer.git"
+  },
+  "keywords": [
+    "Budgeting"
+  ],
+  "author": "Josef Fast",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SolidJ01/Budgeteer/issues"
+  },
+  "homepage": "https://github.com/SolidJ01/Budgeteer#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "create-react-app": "^3.2.0",
+    "express": "^4.17.1",
+    "pg": "^7.12.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4"
+  }
+}

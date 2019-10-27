@@ -1,0 +1,121 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: rgb(40,40,40);
+  color: white;
+  font-family: helvetica, "helvetica neue", sans-serif;
+}
+
+.topbar {
+  width: 100%;
+  height: 80px;
+  background-color: rgb(80,80,80);
+}
+
+.iocontainer {
+  width: 50%;
+  float: left;
+  min-width: 500px;
+}
+
+.iolist {
+  width: 500px;
+  max-width: 95vw;
+  background-color: rgb(30,30,30);
+  margin: 150px auto 0 auto;
+}
+
+.iolist .titleseg {
+  width: 100%;
+  height: 70px;
+  background-color: rgb(70,70,70);
+  font-size: 25px;
+  padding: 20px 40px;
+}
+
+.iolist .sum {
+  width: 100%;
+  height: 70px;
+  background-color: rgb(70,70,70);
+  font-size: 25px;
+  padding: 20px 40px;
+  margin-top: 10px;
+}
+
+.iolist .sum#Income {
+  color: green;
+}
+
+.iolist .sum#Expenses {
+  color: red;
+}
+
+.iolist .sum .sumtext {
+  float: left;
+}
+
+.iolist .sum .sumamount {
+  float: right;
+}
+
+
+
+.ioelement {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 10px;
+}
+
+.ioelement.true {
+  height: auto;
+  overflow: auto;
+}
+
+.ioelementmain {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(70,70,70);
+  font-size: 20px;
+  padding: 15px 40px;
+  cursor: pointer;
+}
+
+.ioelementname {
+  float: left;
+}
+
+.ioelementamount {
+  float: right;
+}
+
+.ioelementamount.Expenses {
+  color: red;
+}
