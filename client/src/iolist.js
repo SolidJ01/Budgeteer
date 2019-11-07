@@ -8,26 +8,29 @@ export class IOList extends Component {
     this.state = {
       type: props.type,
       items: props.items,
+      monthly: props.monthly,
+      total: props.total,
+      monsubcon: props.monsubcon,
     };
   }
   render() {
     return (
-      <div class="iolist">
+      <div class={"iolist " + this.state.type}>
         <div class="titleseg">
           <b>{this.state.type}</b>
         </div>
 
         <IOElement type={this.state.type}
-          subcontent="hej"
+          subcontent={this.state.monsubcon}
           name={"Monthly " + this.state.type}
-          amount="10539"/>
+          amount={this.state.monthly}/>
 
         <div class="sum" id={this.state.type}>
           <b class="sumtext">
-            Total {this.state.type}
+            Total {}
           </b>
           <b class="sumamount">
-            10539:-
+            {this.state.monthly}:-
           </b>
         </div>
         {this.state.items}
