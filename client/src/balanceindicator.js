@@ -7,11 +7,11 @@ export class BalanceIndicator extends Component {
   }
   render() {
     return (
-      <div class="balanceindicator">
-        <div class="balanceindmain">
+      <div className="balanceindicator">
+        <div className="balanceindmain">
           <b>Balance</b>
         </div>
-        <div class="balance">
+        <div className="balance">
           {this.props.balance}
         </div>
       </div>

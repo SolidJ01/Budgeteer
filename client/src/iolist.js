@@ -2,39 +2,24 @@ import React, {Component} from 'react';
 import './App.css';
 import {IOElement} from './ioelement.js';
 
-export class IOList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: props.type,
-      items: props.items,
-      monthly: props.monthly,
-      total: props.total,
-      monsubcon: props.monsubcon,
-    };
-  }
-  render() {
+export function IOList (props) {
     return (
-      <div class={"iolist " + this.state.type}>
-        <div class="titleseg">
-          <b>{this.state.type}</b>
+      <div className={"iolist " + props.type}>
+        <div className="titleseg">
+          <b>{props.type}</b>
         </div>
 
-        <IOElement type={this.state.type}
-          subcontent={this.state.monsubcon}
-          name={"Monthly " + this.state.type}
-          amount={this.state.monthly}/>
+        {props.monsubcon}
 
-        <div class="sum" id={this.state.type}>
-          <b class="sumtext">
+        <div className="sum" id={props.type}>
+          <b className="sumtext">
             Total {}
           </b>
-          <b class="sumamount">
-            {this.state.monthly}:-
+          <b className="sumamount">
+            {props.monthly}:-
           </b>
         </div>
-        {this.state.items}
+        {props.items}
       </div>
     );
-  }
 }

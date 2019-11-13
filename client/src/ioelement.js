@@ -14,18 +14,18 @@ export class IOElement extends Component {
   }
   render() {
     return (
-      <div class={"ioelement " + this.state.expanded}>
+      <div key={this.state.name.toString()} className={"ioelement " + this.state.expanded}>
         <span onClick={()=>this.setState({expanded: !this.state.expanded})}>
-        <div class="ioelementmain">
-          <b class="ioelementname">
+        <div className="ioelementmain">
+          <b className="ioelementname">
             {this.state.name}
           </b>
-          <b class={"ioelementamount " + this.state.type}>
+          <b className={"ioelementamount " + this.state.type}>
             {this.state.amount}:-
           </b>
         </div>
         </span>
-        <div class="ioelementsubcontent">
+        <div className="ioelementsubcontent">
           {this.state.subcontent}
         </div>
       </div>

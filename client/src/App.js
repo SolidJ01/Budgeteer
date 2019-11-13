@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Topbar} from './topbar.js';
 import {IOList} from './iolist.js';
@@ -7,37 +6,79 @@ import {IOElement} from './ioelement.js';
 import {IOSubelement} from './iosubelement.js';
 import {BalanceIndicator} from './balanceindicator.js';
 
-function App() {
-  let sublist = [];
-  for(let i=0; i < 3; i++) {
-    let item = tempSubItems();
-    sublist.push(item);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      monthlyIncome: "",
+      monthlyExpenses: "",
+      incomeList: [(<IOElement type="Income" name="thing" amount="10"/>)],
+      expensesList: [],
+      incomeSum: 0,
+      expensesSum: 0,
+    }
   }
 
-  let list = [];
-  for(let i=0; i < 5; i++) {
-    let item = tempItems(sublist);
-    list.push(item);
+  getExpensesList = () => {
+    fetch('/api/cities')
+    .then(res => res.json())
+    .then(res => {
+      //var expensesList = res.map(r => r.item);
+      let amount = 0;
+      for (let i = 0; i < res.length; i++) {
+        amount += res[i].amount;
+      }
+      const expensesList = res.map((item, i) =>
+        <IOElement key={item.id} name={item.name} type={item.type} amount={item.amount} />
+      );
+      console.log(expensesList);
+      this.setState({ expensesList: expensesList, expensesSum: amount });
+      console.log(this.state.expensesList);
+    });
+
+    fetch('/api/monthly')
+    .then(res => res.json())
+    .then(res => {
+      let amount = this.state.expensesSum;
+      let baseamount = this.state.expensesSum;
+      for (let i = 0; i < res.length; i++) {
+        amount += res[i].amount;
+        console.log(amount);
+      }
+      baseamount = amount - baseamount;
+      const monthlyExpenses = res.map((item, i) =>
+        <IOSubelement key={item.id} name={item.name} amount={item.amount}/>
+      );
+      const monthlyItem = (
+        <IOElement name="Monthly Expenses" type="Expenses" amount={baseamount} subcontent={monthlyExpenses} />
+      )
+      this.setState({ monthlyExpenses: monthlyItem, expensesSum: amount });
+      console.log(this.state.monthlyExpenses);
+      console.log(this.state.expensesSum);
+    });
+  };
+
+  componentDidMount () {
+    this.getExpensesList();
   }
 
-  let moninc = (<IOSubelement name="CSN" amount="11362"/>);
-  let monexp = (<IOSubelement name="Månadsavgift" amount="1460"/>);
-  let monexq = (<IOSubelement name="Reg. runt-kort" amount="1342"/>);
-  let monex = [monexp, monexq];
-
-  return (
-    <div>
-      <Topbar/>
-      <div class="iocontainer">
-        <IOList type="Income" monthly="11362" monsubcon={moninc}/>
+  render() {
+    return (
+      <div>
+        <Topbar/>
+        <div className="iocontainer">
+          <IOList type="Income" items={this.state.incomeList} monthly="11362" monsubcon={this.state.moninc}/>
+        </div>
+        <div className="iocontainer">
+          <IOList type="Expenses" items={this.state.expensesList} monthly={this.state.expensesSum} monsubcon={this.state.monthlyExpenses}/>
+        </div>
+        <BalanceIndicator positive="Positive" balance="5112"/>
       </div>
-      <div class="iocontainer">
-        <IOList type="Expenses" items={list} monthly="6250" monsubcon={monex}/>
-      </div>
-      <BalanceIndicator positive="Positive" balance="5112"/>
-    </div>
-  );
+    );
+  }
 }
+
+
 
 function tempItems(subcontent) {
   return (

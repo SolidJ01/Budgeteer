@@ -1,8 +1,8 @@
 const db = require('../database');
 
-class Cities {
+class Monthly {
   static retrieveAll(callback) {
-    db.query('SELECT id, name, type, amount, subcontent  FROM indepitems', function (err, res) {
+    db.query('SELECT id, name, amount FROM monthlyexpenses', function(err, res) {
       if (err.error) {
         return callback(err);
       }
@@ -11,7 +11,7 @@ class Cities {
   }
 
   static insert() {
-    db.query('INSERT INTO indepItems (title, item) VALUES ($1, $2)', [title], [item], function (err, res) {
+    db.query('INSERT INTO monthlyexpenses (name, amount) VALUES ($1, $2)', [name], [amount], function(err, res) {
       if (err.error)
         return callback(err);
       callback(res);
@@ -19,4 +19,4 @@ class Cities {
   }
 }
 
-module.exports = Cities;
+module.exports = Monthly;
