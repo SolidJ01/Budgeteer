@@ -12,11 +12,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use('/api/cities', require('./api/cities'));
+app.use('/api/items', require('./api/items'));
 app.use('/api/monthly', require('./api/monthly'));
 
 app.listen(PORT, () => {
-  console.log(`Server giving the Covenant back their bomb on port ${PORT}`);
+  console.log(`Server preparing to light the holy rings and burn a path into the divine beyond on port ${PORT}`);
 });
 
 db.query('SELECT NOW()', (err, res) => {

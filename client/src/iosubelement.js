@@ -7,11 +7,11 @@ export class IOSubelement extends Component {
   }
   render() {
     return (
-      <div class="iosubelement">
-        <b class="ioelementname">
+      <div className="iosubelement">
+        <b className="ioelementname">
           {this.props.name}
         </b>
-        <b class="ioelementamount">
+        <b className="ioelementamount">
           {this.props.amount}:-
         </b>
       </div>

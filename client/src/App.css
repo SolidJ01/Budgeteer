@@ -22,7 +22,8 @@
 }
 
 :root {
-  --red-alert: /*rgb(136,0,21)*/red;
+  --red-alert: #ff3a3a;
+  --green-alert: #02ce02;
   --ioel-rad: 3px;
   --active-primary: rgb(147,163,179);
   --item-primary: rgb(90,90,90);
@@ -98,11 +99,11 @@ body {
   border-radius: var(--ioel-rad);
 }
 
-.iolist .sum#Income {
-  color: green;
+.iolist .sum#Income .indicator {
+  color: var(--green-alert);
 }
 
-.iolist .sum#Expenses {
+.iolist .sum#Expenses .indicator {
   color: var(--red-alert);
 }
 
@@ -156,7 +157,11 @@ body {
   float: right;
 }
 
-.ioelementamount.Expenses {
+.ioelementamount.Income .indicator {
+  color: var(--green-alert);
+}
+
+.ioelementamount.Expenses .indicator {
   color: var(--red-alert);
 }
 
@@ -172,6 +177,44 @@ body {
   padding: 12px 40px;
   cursor: default;
   border-radius: var(--ioel-rad);
+}
+
+
+
+
+
+.addbutton {
+  width: 100%;
+  height: 46px;
+  margin-top: 20px;
+  border: 3px dashed var(--item-primary);
+  border-radius: var(--ioel-rad);
+  color: var(--item-primary);
+  position: relative;
+  font-size: 20px;
+  transition: .125s;
+}
+
+.addbutton:hover {
+  border-color: var(--active-primary);
+  color: var(--active-primary);
+}
+
+.addbutton span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.addbutton b {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bolder;
 }
 
 
@@ -210,4 +253,45 @@ body {
   height: 45px;
   padding: 12px 40px;
   font-weight: bold;
+}
+
+
+
+
+
+
+.popupcontainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.popupcontainer.false {
+  height: 0;
+  width: 0;
+}
+
+.popupcontainer .background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0,0,0,0.25);
+}
+
+.popupcontainer .popup {
+  width: 700px;
+  height: 400px;
+  background-color: var(--item-primary);
+  color: white;
+  font-size: 20px;
+  border-radius: var(--ioel-rad);
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

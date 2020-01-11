@@ -13,6 +13,7 @@ export class IOElement extends Component {
     };
   }
   render() {
+    let isIncome = this.state.type == 'Income';
     return (
       <div key={this.state.name.toString()} className={"ioelement " + this.state.expanded}>
         <span onClick={()=>this.setState({expanded: !this.state.expanded})}>
@@ -21,6 +22,9 @@ export class IOElement extends Component {
             {this.state.name}
           </b>
           <b className={"ioelementamount " + this.state.type}>
+            <b className="indicator">
+              {isIncome ? '+ ' : '- '}
+            </b>
             {this.state.amount}:-
           </b>
         </div>
